@@ -3,39 +3,97 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: "Contador de Pessoas",
-    home: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    home: Home(),
+    debugShowCheckedModeBanner: false,
+  ));
+}
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  var cont = 0;
+  var desc = "Pode Entrar!";
+
+  void somar() {
+    setState(() {
+      cont++;
+      desc = setDescription(cont);
+    });
+  }
+
+  void subtrair() {
+    setState(() {
+      cont--;
+      desc = setDescription(cont);
+    });
+  }
+
+  String setDescription(int number){
+    if(number >= 10)
+      return "Lotado!";
+    else if (number < 10 && number >= 0)
+      return "Pode Entrar!";
+    else 
+      return "Mundo Invertido ?!?";
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
       children: <Widget>[
-        Text(
-          "Pessoas: 0",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        Image.asset(
+          "images/restaurant.jpg",
+          fit: BoxFit.cover,
+          height: 1000,
         ),
-        Row(
+        Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              child: Text(
-                "-1",
-                style: TextStyle(fontSize: 40, color: Colors.white),
-              ),
-              onPressed: () {},
+            Text(
+              "Pessoas: " + cont.toString(),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
-            FlatButton(
-              child: Text(
-                "+1",
-                style: TextStyle(fontSize: 40, color: Colors.white),
-              ),
-              onPressed: () {},
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: FlatButton(
+                    child: Text(
+                      "-1",
+                      style: TextStyle(fontSize: 40, color: Colors.white),
+                    ),
+                    onPressed: subtrair,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: FlatButton(
+                    child: Text(
+                      "+1",
+                      style: TextStyle(fontSize: 40, color: Colors.white),
+                    ),
+                    onPressed: somar,
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              desc,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 30),
             ),
           ],
         ),
-        Text(
-          "Pode Entrar!",
-          style: TextStyle(
-              color: Colors.white, fontStyle: FontStyle.italic, fontSize: 30),
-        ),
       ],
-    ),
-    debugShowCheckedModeBanner: false,
-  ));
+    );
+  }
 }
