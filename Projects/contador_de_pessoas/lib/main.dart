@@ -18,19 +18,12 @@ class _HomeState extends State<Home> {
   var _cont = 0;
   var _desc = "Pode Entrar!";
 
-  void somar() {
+  void calcular(int number) {
     setState(() {
-      _cont++;
+      _cont += number;
       _desc = setDescription(_cont);
     });
-  }
-
-  void subtrair() {
-    setState(() {
-      _cont--;
-      _desc = setDescription(_cont);
-    });
-  }
+  }  
 
   String setDescription(int number){
     if(number >= 10)
@@ -69,7 +62,7 @@ class _HomeState extends State<Home> {
                       "-1",
                       style: TextStyle(fontSize: 40, color: Colors.white),
                     ),
-                    onPressed: subtrair,
+                    onPressed: () {calcular(-1); },
                   ),
                 ),
                 Padding(
@@ -79,7 +72,7 @@ class _HomeState extends State<Home> {
                       "+1",
                       style: TextStyle(fontSize: 40, color: Colors.white),
                     ),
-                    onPressed: somar,
+                    onPressed: () {calcular(1); },
                   ),
                 ),
               ],
