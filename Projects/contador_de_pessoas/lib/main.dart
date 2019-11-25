@@ -15,20 +15,20 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  var cont = 0;
-  var desc = "Pode Entrar!";
+  var _cont = 0;
+  var _desc = "Pode Entrar!";
 
   void somar() {
     setState(() {
-      cont++;
-      desc = setDescription(cont);
+      _cont++;
+      _desc = setDescription(_cont);
     });
   }
 
   void subtrair() {
     setState(() {
-      cont--;
-      desc = setDescription(cont);
+      _cont--;
+      _desc = setDescription(_cont);
     });
   }
 
@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Pessoas: " + cont.toString(),
+              "Pessoas: " + _cont.toString(),
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
@@ -85,7 +85,7 @@ class _HomeState extends State<Home> {
               ],
             ),
             Text(
-              desc,
+              _desc,
               style: TextStyle(
                   color: Colors.white,
                   fontStyle: FontStyle.italic,
