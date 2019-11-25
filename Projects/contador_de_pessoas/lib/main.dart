@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
                       "-1",
                       style: TextStyle(fontSize: 40, color: Colors.white),
                     ),
-                    onPressed: () {calcular(-1); },
+                    onPressed: () { calcular(-1); },
                   ),
                 ),
                 Padding(
@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
                       "+1",
                       style: TextStyle(fontSize: 40, color: Colors.white),
                     ),
-                    onPressed: () {calcular(1); },
+                    onPressed: () { calcular(1); },
                   ),
                 ),
               ],
