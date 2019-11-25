@@ -14,9 +14,9 @@ class _HomePageState extends State<HomePage> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void _resetFields() {
-    setState(() {
-      weightController.text = "";
-      heightController.text = "";
+    weightController.text = "";
+    heightController.text = "";
+    setState(() {      
       _info = "Informe seus dados";
       _formKey = GlobalKey<FormState>();
     });
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   void calculate() {
     setState(() {
       double weight = double.parse(weightController.text);
-      double height = double.parse(weightController.text) / 100;
+      double height = double.parse(heightController.text) / 100;
 
       var imc = weight / (height * height);
 
@@ -76,6 +76,7 @@ class _HomePageState extends State<HomePage> {
                   controller: weightController,
                   validator: (value) {
                     if (value.isEmpty) return "Insira seu Peso!";
+                    else return null;
                   },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -88,6 +89,7 @@ class _HomePageState extends State<HomePage> {
                   controller: heightController,
                   validator: (value) {
                     if (value.isEmpty) return "Insira sua Altura!";
+                    else return null;
                   },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
